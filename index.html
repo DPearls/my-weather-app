@@ -11,7 +11,9 @@
   </head>
   <body>
     <div class="container">
+         <div class="weather-app=content">
         <div class="weather-app">
+            <div class="overview">
         <form id="search-form">
             <div class="row">
                 <div class="col-6">
@@ -37,10 +39,18 @@
 
         </li>
     </ul>
+    </div>
     <div class="row">
         <div class="col-6">
+            
+           <span class="icon">
             <img src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png" alt="Partly cloudy" />
-            29 °C | °F
+         </span>
+            
+           <strong> 29</strong> 
+           <span class="units">
+           °C | <a href="#"> °F </a>
+            </span>
         </div>
         <div class="col-6">
             <ul>
@@ -56,11 +66,14 @@
             </ul>
         </div>
         </div>
-        <small>
+       
+    </div>
+       </div>
+     <p>
           <a href="https://github.com/DPearls/my-weather-app">Open-source code</a>  by Folasayo Owolabi
           
-        </small>
-    </div>
+     </p>
+     
     <script src="src/app.js"></script>
   </body>
 </html>
