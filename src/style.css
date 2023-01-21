@@ -1,7 +1,13 @@
 body {
   background: linear-gradient(90.4deg, #f233f6, #a427fb);
+  max-width: 900px;
+  border: 1px solid #000000;
 }
 
 h1 {
   color: blue;
+}
+.weather-app {
+  margin: 30px auto;
+  padding: 20px;
 }
