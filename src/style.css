@@ -45,6 +45,8 @@ li:first-letter {
 
 p {
   display: block;
+  text-align: center;
+  margin-top: 0 auto;
 }
 
 .overview {
