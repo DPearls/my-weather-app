@@ -21,27 +21,53 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function formatDay(dtimestamp) {
+  let date = newDate(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["Fri", "Sat", "Sun", "Mon", "Tue"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
         <div class="col-2">
-      <div class="weather-forecast-date">${day}</div>
-                                <img src="https://openweathermap.org/img/wn/01n@2x.png"alt="" width="100" />
+      <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
+                                  
+                                <img src="https://openweathermap.org/img/wn/${
+                                  forecastDay.weather[0].icon
+                                }@2x.png"alt="" width="100" />
                                 <div class="weather-forecast-temperatures">
-                                        <span class="weather-forecast-temperatures-max">33° </span>
-                                        <span class="weather-forecast-temperatures-min">26°</span>
+                                        <span class="weather-forecast-temperatures-max">${Math.round(
+                                          forecastDay.temp.max
+                                        )}° </span>
+                                        <span class="weather-forecast-temperatures-min">${Math.round(
+                                          forecastDay.temp.min
+                                        )}°</span>
                                         </div>
                         </div>
                         `;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
   console.log(forecastHTML);
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "de879077b25c4821b4116348dcf1cdcc";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&unit=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function displayTemperature(response) {
@@ -66,11 +92,12 @@ function displayTemperature(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 function search(city) {
   let apiKey = "de879077b25c4821b4116348dcf1cdcc";
-
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
 }
@@ -106,4 +133,3 @@ let celciusLink = document.querySelector("#celcius-link");
 celciusLink.addEventListener("click", displayCelciusTemperature);
 
 search("Lagos");
-displayForecast();
