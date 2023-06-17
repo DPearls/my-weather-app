@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-  background: linear-gradient(90.4deg, #f233f6, #a427fb);
+  background: linear-gradient(90.4deg, #c1630b, #13044e);
   max-width: 900px;
   border: 1px solid #000000;
   margin: 30px auto;
@@ -12,7 +12,7 @@ body {
 }
 
 h1 {
-  color: blue;
+  color: #13044e;
   font-size: 24px;
   margin-bottom: 0;
 }
@@ -33,7 +33,7 @@ ul {
 li {
   list-style: none;
   line-height: 24px;
-  color: #000000;
+  color: #ffffff;
   font-size: 16px;
   margin: 0;
   padding: 0;
@@ -47,6 +47,8 @@ p {
   display: block;
   text-align: center;
   margin-top: 0 auto;
+  color: #13044e;
+  font-weight: bold;
 }
 
 .overview {
@@ -60,7 +62,7 @@ p {
   width: 60px;
 }
 strong {
-  color: purple;
+  color: #13044e;
   font-size: 40px;
   font-weight: 400;
   line-height: 1;
@@ -73,7 +75,7 @@ strong {
 }
 
 .active {
-  color: #000000;
+  color: #ffffff;
   cursor: default;
   text-decoration: none;
 }
@@ -86,11 +88,12 @@ strong {
 .weather-forecast {
   margin-top: 10px;
   text-align: center;
+  color: white;
 }
 
 .weather-forecast-date {
   font-size: 20px;
-  color: black;
+  color: white;
   opacity: 0.5;
 }
 
